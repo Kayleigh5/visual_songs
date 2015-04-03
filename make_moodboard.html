@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Visual Songs | Moodboard</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	height: 100%;
+}
+div {
+	height: 100%;
+	width: 100%;
+	float: left;
+}
+.container {
+	background-repeat:no-repeat;
+    background-size:cover;
+	border: 2px solid white; 
+	box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+
+.clip-ellipse{
+	background-repeat:no-repeat;
+    background-size:cover;
+	border: 15px solid white; 
+	box-sizing:border-box;
+  	-moz-box-sizing:border-box;
+ 	 -webkit-box-sizing:border-box;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%) ;
+	width: 200px;
+	height: 200px;
+	-webkit-clip-path: circle(90px at center);
+	border-radius: 400px;
+	
+}
+</style>
+<script src="jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	function splitElement(element){
+		
+		var numberOfElements = element.length;
+		var randomIndex = Math.floor((Math.random() * (numberOfElements)));
+		element = $($(".container").get(randomIndex));
+		
+		var divider = 2;
+		$( "<div class='container'></div>" ).appendTo(element);
+		$( "<div class='container'></div>" ).appendTo(element);
+		element.removeClass('container');
+		var splitHorizontal = Math.floor(Math.random()+ 0.5);
+		if (splitHorizontal == 1){
+			element.children().css( "height", "100%" );			
+			var child1Width = 100/divider;
+			var child2Width = 100 - child1Width;
+			element.children().eq(0).css( "width", child1Width + "%");
+			element.children().eq(1).css("width", child2Width + "%" );
+		} else {
+			element.children().css( "width", "100%" );			
+			var child1Height = 100/divider;
+			var child2Height = 100 - child1Height;
+			element.children().eq(0).css( "height", child1Height + "%");
+			element.children().eq(1).css("height", child2Height + "%" );
+		}
+	}
+	
+	for(var i = 0; i < 8; i++){
+		splitElement( $(".container"));
+	}
+	
+	var divSizes = [];
+
+	for(var i = 0; i < 9; i++){
+		divSizes[i] = [$($(".container").get(i)).height()  *   $($(".container").get(i)).width() , i];
+	}
+
+	function mySorting(a,b) {
+		a = a[0];
+		b = b[0];
+		return a == b ? 0 : (a > b ? -1 : 1)
+		}
+
+	divSizes.sort();
+	divSizes.sort(mySorting);
+
+	for(var i = 0; i < 9; i++){
+		var randomImage = Math.floor((Math.random() * 5));
+		$($(".container").get(divSizes[i][1])).css('background-image', 'url("images/' + i + '/' + (randomImage+1) + '.jpg")');
+	}
+	
+	$( "<div class = 'clip-ellipse'></div>" ).insertAfter( ".container" );
+	
+	var randomArtist = Math.floor((Math.random() * 5));
+	$($(".clip-ellipse")).css('background-image', 'url("images/artist/' + (randomArtist+1) + '.jpg")');
+
+	jQuery.get('sentiment_score_file.txt', function(data) {
+	    var sentimentScore = data;
+		console.log(sentimentScore);
+		if (sentimentScore > 50){
+			$($(".container")).css('-webkit-filter', 'saturate('+ (150+(0.4*sentimentScore)) +'%)');
+		} else if (sentimentScore <= 50){
+			$($(".container")).css('-webkit-filter', 'grayscale('+ (100 - sentimentScore) + '%)');
+		}
+	});
+
+	
+
+});
+
+</script>
+</head>
+
+<body>
+<div class = "container"> </div>
+</body>
+</html>

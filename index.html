@@ -1,0 +1,38 @@
+<!Doctype html>
+<head>
+	<link  href="css.css" rel="stylesheet" type="text/css">
+	<link href="bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<link href='http://fonts.googleapis.com/css?family=Vollkorn:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Gentium+Basic:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+
+	<title>Visual Songs</title>
+</head>
+<body>
+
+<div id="home" class="fullscreen">
+  <div class="text-vcenter text-home">
+  	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+	  	<h1>VISUAL SONGS</h1>
+	    <p>This tool visualizes your favorite artists' songs! This is based on the main topics in their lyrics. You can also discover whether your artists are generally positive or negative in their songs.</p><br>
+	    <p id="artist">Type the name of your favorite artist, and hit submit!</p><br>
+	</div>
+
+	<div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
+	    <form action="sentiment_and_topic_analysis.py" method="get">
+			
+				<input type="text" name="artist_name" class="form-control" placeholder="Artist name" id="inputsm">
+				<br>
+				<button type="button submit" value="Submit" class="btn btn-default">Submit
+				</button>
+			
+		</form>
+	</div>
+	</div>
+  </div>
+</div>
+
+
+</body>

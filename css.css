@@ -1,0 +1,62 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.fullscreen {
+  display: table;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover !important;
+}
+
+.text-home h1 {
+  font-family: 'Open Sans';
+  font-weight: 800;
+  font-size: 1.75em;
+  font-weight: 800;
+  margin: 0;
+  padding: 0;
+  padding-bottom: .2em;
+  color: #fff;
+}
+
+.text-home p {
+  font-size: 1.25em;
+  font-family: 'Gentium Basic';
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.place {
+  display: none;
+}
+
+#artist {
+  font-size: 1.25em;
+  font-family: 'Gentium Basic';
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.text-vcenter {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#home {
+  background: url(http://fc01.deviantart.net/fs71/i/2014/019/2/3/autumn_blur___free_texture___background_by_supersweetstock-d72t65j.jpg) no-repeat center center fixed; 
+}
+
+#loading {
+  background: url(http://fc01.deviantart.net/fs71/i/2014/019/2/3/autumn_blur___free_texture___background_by_supersweetstock-d72t65j.jpg) no-repeat center center fixed;
+}
